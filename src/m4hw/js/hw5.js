@@ -69,13 +69,13 @@ console.log(f(25));
 console.log("==============");
 
 
-var f = function(obj){
-    obj.nw="new";
+var f = function (obj) {
+    obj.nw = "new";
 }
 
-function getFunction(f){
+function getFunction(f) {
     var f = f;
-    var obj = {"k":"v","k1":1};
+    var obj = {"k": "v", "k1": 1};
     f(obj);
     console.log(obj);
 }
