@@ -16,7 +16,6 @@
         for (var i = 0; i < data.length; i++) {
             var data2 = data[i];
             str += data2['ccy'] + ' - ' + data2['base_ccy'] + ' : ' + data2['buy'] + ' / ' + data2['sale'] + '<br >';
-            console.log(str);
         }
         var elem = document.getElementById("elid");
         elem.innerHTML = str;
