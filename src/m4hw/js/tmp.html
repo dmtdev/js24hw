@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="elid"></div>
+</body>
+<script>
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5', false);
+        xhr.send();
+        var data = JSON.parse(xhr.responseText);
+        var str = '';
+        for (var i = 0; i < data.length; i++) {
+            var data2 = data[i];
+            str += data2['ccy'] + ' - ' + data2['base_ccy'] + ' : ' + data2['buy'] + ' / ' + data2['sale'] + '<br >';
+            console.log(str);
+        }
+        var elem = document.getElementById("elid");
+        elem.innerHTML = str;
+
+</script>
+</html>
