@@ -3,9 +3,9 @@ node server.js > /dev/null 2>&1  - работает через раз в gitbash
 на убунту - просто запуск без вывода, что логично..
 ```
 npm install forever -g
-forever start server.js
+forever start index.js
 server started on ....
-forever stop server.js
+forever stop index.js
 ```
 все ок
     
