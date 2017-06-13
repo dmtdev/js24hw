@@ -15,6 +15,6 @@ forever stop index.js
 ```
 npm install nodemon -g
 ```
-все ок. 
+все ок. а если не юзать nodemon, вместо него добавить запуск через forever stop, forever start.. start.sh заработает..
     
 с остальным вроде все понятно.
