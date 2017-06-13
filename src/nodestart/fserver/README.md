@@ -16,5 +16,7 @@ forever stop index.js
 npm install nodemon -g
 ```
 все ок. а если не юзать nodemon, вместо него добавить запуск через forever stop, forever start.. start.sh заработает..
+
+так.. получается, что start.sh можно превратить start.js юзая file sistem в node js.. но мы пока этого не знаем;)
     
 с остальным вроде все понятно.
