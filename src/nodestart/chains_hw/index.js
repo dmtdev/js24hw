@@ -1,4 +1,4 @@
-var user = {
+var User = {
     getName: function (argument) {
         console.log(argument);
         return this;
