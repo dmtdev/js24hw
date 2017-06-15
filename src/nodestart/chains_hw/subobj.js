@@ -10,9 +10,8 @@ var User = {
     addr: "O. Polya, 100",
     Address: {
         getAddress: function () {
-            //console.log(parent['addr']);
+            console.log(User['addr']);
             console.log('getAddress');
-            //return parent.this;
         }
     }
 };
