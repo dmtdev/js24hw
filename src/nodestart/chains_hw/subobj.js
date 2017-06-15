@@ -7,7 +7,7 @@ var User = {
         console.log(argument);
         return this;
     },
-    addr: "O. Polya, 100",
+    addr: 'O. Polya, 100',
     Address: {
         getAddress: function () {
             console.log(User['addr']);
@@ -16,5 +16,15 @@ var User = {
     }
 };
 //ответ на вчерашний вопрос по цепочкам - чтобы цепочки работали - метод объекта должен возвращать ссылку на самого себя..
-User.getName("name").getCode("code").getName("Name")['Address'].getAddress();
+User.getName('name').getCode('code').getName('Name')['Address'].getAddress();
 //['Address'].getAddress().getName('Name after addr')
+
+var A = {
+    name: 'val',
+    F: {
+        getName: function () {
+            console.log(this);
+        }
+    }
+};
+A['F'].getName();
