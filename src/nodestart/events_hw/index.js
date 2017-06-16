@@ -23,12 +23,28 @@ function logRequest(req) {
 function start(req, res) {
     serverEvent.emit('connection');
     serverEvent.emit('request', req);
-    res.writeHead(resCode);
-    res.write('request logging.. ');
-    res.end('disconnected..');
+    res.writeHead(resCode,{'Content-type': 'text/html'});
+    res.write('request logging.. ' + '<br />');
+    if (req.method == 'GET') {
+        serverEvent.emit('onGet', req, res);
+    }
+    else {
+        serverEvent.emit('onElse', req, res);
+    }
+    res.end('disconnected..' + '<br />');
+}
+
+function onGet(req, res) {
+    res.write('Query String: ' + req.url + '<br />');
+}
+
+function onElse(req, res) {
+    res.write('Method "' + req.method + '" is not allowed.<br />');
 }
 
 serverEvent.on('listening', listening);
 serverEvent.on('connection', connection);
 serverEvent.on('request', logRequest);
+serverEvent.on('onGet', onGet);
+serverEvent.on('onElse', onElse);
 serverEvent.emit('listening');
