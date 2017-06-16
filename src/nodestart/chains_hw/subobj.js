@@ -15,7 +15,6 @@ var User = {
         }
     }
 };
-//ответ на вчерашний вопрос по цепочкам - чтобы цепочки работали - метод объекта должен возвращать ссылку на самого себя..
 User.getName('name').getCode('code').getName('Name')['Address'].getAddress();
 //['Address'].getAddress().getName('Name after addr')
 
