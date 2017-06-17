@@ -22,8 +22,9 @@ var A = {
     name: 'val',
     F: {
         getName: function () {
+            console.log(A.name);
             console.log(this);
         }
     }
 };
-A['F'].getName();
+A.F.getName();

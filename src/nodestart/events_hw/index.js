@@ -1,25 +1,10 @@
-var event = require('events');
+var events = require('events');
 var http = require('http');
 
 new http.createServer(start).listen(10101);
-var serverEvent = new event.EventEmitter();
+var serverEvent = new events.EventEmitter();
 var resCode = 200;
 var allowedMethods = ['GET', 'POST', 'PUT', 'DELETE'];
-
-function listening() {
-    console.log('Listening...');
-}
-
-function connection() {
-    console.log('Conneting...');
-}
-
-function logRequest(req) {
-    console.log('url: ' + req.url);
-    console.log('method: ' + req.method);
-    resCode = 200;
-    console.log('response http code: ' + resCode);
-}
 
 function start(req, res) {
     serverEvent.emit('connection');
@@ -36,6 +21,13 @@ function start(req, res) {
     res.end('disconnected..' + '<br />');
 }
 
+function logRequest(req) {
+    console.log('url: ' + req.url);
+    console.log('method: ' + req.method);
+    resCode = 200;
+    console.log('response http code: ' + resCode);
+}
+
 function onAllowed(req, res) {
     res.write('Method: ' + req.method + '<br />');
     res.write('Query String: ' + req.url + '<br />');
@@ -46,8 +38,12 @@ function onElse(req, res) {
     res.write('Method "' + req.method + '" is not allowed.<br />');
 }
 
-serverEvent.on('listening', listening);
-serverEvent.on('connection', connection);
+serverEvent.on('listening', function () {
+    console.log('Listening...');
+});
+serverEvent.on('connection', function () {
+    console.log('Conneting...');
+});
 serverEvent.on('request', logRequest);
 serverEvent.on('onAllowed', onAllowed);
 serverEvent.on('onElse', onElse);
