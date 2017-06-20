@@ -21,12 +21,13 @@ function start(req, res) {
         console.log('request: about');
         console.log('url: ' + req.url);
         console.log('method: ' + req.method);
+        res.end('disconnected..' + '<br />');
    }
     else if (req.url == '/currency') {
         var currensy = curl.getJSON('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=3', function (err, response, data) {
             console.log('err: ' + err);
-            console.log('response: ' + response);
-            console.log('body: ' + data);
+            //console.log('response: ' + response);
+            //console.log('body: ' + data);
             //console.log(res);
             for (var i = 0; i < data.length; i++) {
                 for (var k in data[i]) {
