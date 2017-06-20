@@ -11,24 +11,33 @@ function start(req, res) {
     res.writeHead(resCode, {'Content-type': 'text/html'});
     serverEvent.emit('connection');
     serverEvent.emit('request', req);
-    if(req.url == '/stop'){
+    if (req.url == '/stop') {
         console.log('request: stop');
         app.close();
         process.exit(-1);
+        res.end('disconnected..' + '<br />');
     }
-    else if(req.url == '/about'){
+    else if (req.url == '/about') {
         console.log('request: about');
         console.log('url: ' + req.url);
         console.log('method: ' + req.method);
-    }
-    else if(req.url == '/currency'){
-        var  currensy  = curl.get('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=3)', function (res) {
-            console.log('res: ' +  res);
+   }
+    else if (req.url == '/currency') {
+        var currensy = curl.getJSON('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=3', function (err, response, data) {
+            console.log('err: ' + err);
+            console.log('response: ' + response);
+            console.log('body: ' + data);
+            //console.log(res);
+            for (var i = 0; i < data.length; i++) {
+                for (var k in data[i]) {
+                    res.write(k + ' -> ' + data[i][k] + '<br>');
+                }
+            }
+            res.end('disconnected..' + '<br />');
         })
+
         console.log('currency:' + currensy);
     }
-
-
     // res.write('request logging.. ' + '<br />');
     //
     // if (allowedMethods.indexOf(req.method) > -1) {
@@ -37,8 +46,8 @@ function start(req, res) {
     // else {
     //     serverEvent.emit('onElse', req, res);
     // }
+    //res.end('disconnected..' + '<br />');
 
-    res.end('disconnected..' + '<br />');
 }
 
 function logRequest(req) {
