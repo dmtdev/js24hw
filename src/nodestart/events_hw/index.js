@@ -1,23 +1,43 @@
 var events = require('events');
 var http = require('http');
+var curl = require('curl');
 
-new http.createServer(start).listen(10101);
+var app = new http.createServer(start).listen(10101);
 var serverEvent = new events.EventEmitter();
 var resCode = 200;
 var allowedMethods = ['GET', 'POST', 'PUT', 'DELETE'];
 
 function start(req, res) {
+    res.writeHead(resCode, {'Content-type': 'text/html'});
     serverEvent.emit('connection');
     serverEvent.emit('request', req);
-    res.writeHead(resCode, {'Content-type': 'text/html'});
-    res.write('request logging.. ' + '<br />');
+    if(req.url == '/stop'){
+        console.log('request: stop');
+        app.close();
+        process.exit(-1);
+    }
+    else if(req.url == '/about'){
+        console.log('request: about');
+        console.log('url: ' + req.url);
+        console.log('method: ' + req.method);
+    }
+    else if(req.url == '/currency'){
+        var  currensy  = curl.get('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=3)', function (res) {
+            console.log('res: ' +  res);
+        })
+        console.log('currency:' + currensy);
+    }
 
-    if (allowedMethods.indexOf(req.method) > -1) {
-        serverEvent.emit('onAllowed', req, res);
-    }
-    else {
-        serverEvent.emit('onElse', req, res);
-    }
+
+    // res.write('request logging.. ' + '<br />');
+    //
+    // if (allowedMethods.indexOf(req.method) > -1) {
+    //     serverEvent.emit('onAllowed', req, res);
+    // }
+    // else {
+    //     serverEvent.emit('onElse', req, res);
+    // }
+
     res.end('disconnected..' + '<br />');
 }
 
@@ -47,4 +67,10 @@ serverEvent.on('connection', function () {
 serverEvent.on('request', logRequest);
 serverEvent.on('onAllowed', onAllowed);
 serverEvent.on('onElse', onElse);
+serverEvent.on('about', function () {
+    res.write('Query String: ' + req.url + '<br />');
+});
+serverEvent.on('stop', function () {
+    app.close();
+});
 serverEvent.emit('listening');
