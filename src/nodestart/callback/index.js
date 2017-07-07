@@ -7,3 +7,10 @@ first(function(){
 });
 
 
+function fc(callback){
+    if(typeof callback == "function")
+    {
+
+    }
+}
+
