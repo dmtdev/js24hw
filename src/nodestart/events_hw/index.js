@@ -1,6 +1,6 @@
 var events = require('events');
 var http = require('http');
-//var curl = require('curl');
+var curl = require('curl');
 
 var app = new http.createServer(start).listen(10101);
 var serverEvent = new events.EventEmitter();
