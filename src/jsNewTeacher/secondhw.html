@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="userid" name="userid"><br/>
+<input type="text" id="search" name="search"><br/>
+<input type="button" onclick="javascript:changeNames()" value="changeNames">
+<div id="user-data">
+
+</div>
+
+<script>
+function changeNames() {
+    var name = document.getElementById('search').value;
+    var id = document.getElementById('userid').value;
+
+}
+    var userReg = [{
+        "id": 1,
+        "first_name": "Charles",
+        "last_name": "Aizkovitch",
+        "email": "caizkovitch0@youtu.be",
+        "gender": "Male",
+        "ip_address": "203.200.94.106"
+    },
+        {
+            "id": 2,
+            "first_name": "Ches",
+            "last_name": "Birks",
+            "email": "cbirks1@paginegialle.it",
+            "gender": "Male",
+            "ip_address": "161.162.179.167"
+        },
+        {
+            "id": 3,
+            "first_name": "Sven",
+            "last_name": "Moreland",
+            "email": "smoreland2@wsj.com",
+            "gender": "Male",
+            "ip_address": "68.170.14.74"
+        },
+        {
+            "id": 4,
+            "first_name": "Fleurette",
+            "last_name": "Harrema",
+            "email": "fharrema3@examiner.com",
+            "gender": "Female",
+            "ip_address": "215.101.234.61"
+        },
+        {
+            "id": 5,
+            "first_name": "Dermot",
+            "last_name": "Duffit",
+            "email": "dduffit4@homestead.com",
+            "gender": "Male",
+            "ip_address": "21.144.112.108"
+        },
+        {
+            "id": 6,
+            "first_name": "Sollie",
+            "last_name": "Seivwright",
+            "email": "sseivwright5@jigsy.com",
+            "gender": "Male",
+            "ip_address": "244.38.47.232"
+        },
+        {
+            "id": 7,
+            "first_name": "Ulberto",
+            "last_name": "Chanders",
+            "email": "uchanders6@ifeng.com",
+            "gender": "Male",
+            "ip_address": "224.77.184.68"
+        },
+        {
+            "id": 8,
+            "first_name": "Aloise",
+            "last_name": "Freezer",
+            "email": "afreezer7@chronoengine.com",
+            "gender": "Female",
+            "ip_address": "157.117.213.47"
+        },
+        {
+            "id": 9,
+            "first_name": "Chane",
+            "last_name": "Gingle",
+            "email": "cgingle8@storify.com",
+            "gender": "Male",
+            "ip_address": "137.215.220.16"
+        },
+        {
+            "id": 10,
+            "first_name": "Demeter",
+            "last_name": "Torns",
+            "email": "dtorns9@illinois.edu",
+            "gender": "Female",
+            "ip_address": "76.167.157.59"
+        },
+        {
+            "id": 11,
+            "first_name": "Hunt",
+            "last_name": "Dumbelton",
+            "email": "hdumbeltona@unicef.org",
+            "gender": "Male",
+            "ip_address": "142.143.108.236"
+        },
+        {
+            "id": 12,
+            "first_name": "Cobbie",
+            "last_name": "Josebury",
+            "email": "cjoseburyb@jigsy.com",
+            "gender": "Male",
+            "ip_address": "154.87.70.12"
+        },
+        {
+            "id": 13,
+            "first_name": "Wilfrid",
+            "last_name": "Hexam",
+            "email": "whexamc@google.com.hk",
+            "gender": "Male",
+            "ip_address": "182.10.170.126"
+        },
+        {
+            "id": 14,
+            "first_name": "Pebrook",
+            "last_name": "Donnellan",
+            "email": "pdonnelland@gravatar.com",
+            "gender": "Male",
+            "ip_address": "237.159.23.138"
+        },
+        {
+            "id": 15,
+            "first_name": "Edgar",
+            "last_name": "Richley",
+            "email": "erichleye@1688.com",
+            "gender": "Male",
+            "ip_address": "159.127.40.192"
+        },
+        {
+            "id": 16,
+            "first_name": "Leticia",
+            "last_name": "Jemison",
+            "email": "ljemisonf@cbsnews.com",
+            "gender": "Female",
+            "ip_address": "122.228.179.124"
+        },
+        {
+            "id": 17,
+            "first_name": "Archambault",
+            "last_name": "Bartolomeu",
+            "email": "abartolomeug@github.com",
+            "gender": "Male",
+            "ip_address": "69.75.74.158"
+        },
+        {
+            "id": 18,
+            "first_name": "Marlow",
+            "last_name": "Bottby",
+            "email": "mbottbyh@google.pl",
+            "gender": "Male",
+            "ip_address": "154.160.205.127"
+        },
+        {
+            "id": 19,
+            "first_name": "Lorelle",
+            "last_name": "Dinis",
+            "email": "ldinisi@wisc.edu",
+            "gender": "Female",
+            "ip_address": "94.63.161.211"
+        },
+        {
+            "id": 20,
+            "first_name": "Gregoire",
+            "last_name": "Battrick",
+            "email": "gbattrickj@bravesites.com",
+            "gender": "Male",
+            "ip_address": "209.163.51.214"
+        },
+        {
+            "id": 21,
+            "first_name": "Ailis",
+            "last_name": "Connold",
+            "email": "aconnoldk@reddit.com",
+            "gender": "Female",
+            "ip_address": "41.138.111.192"
+        },
+        {
+            "id": 22,
+            "first_name": "Neilla",
+            "last_name": "Offner",
+            "email": "noffnerl@cpanel.net",
+            "gender": "Female",
+            "ip_address": "86.225.40.22"
+        },
+        {
+            "id": 23,
+            "first_name": "Dulciana",
+            "last_name": "Trowbridge",
+            "email": "dtrowbridgem@weather.com",
+            "gender": "Female",
+            "ip_address": "12.199.36.202"
+        },
+        {
+            "id": 24,
+            "first_name": "Ingmar",
+            "last_name": "Stickells",
+            "email": "istickellsn@senate.gov",
+            "gender": "Male",
+            "ip_address": "117.170.63.112"
+        },
+        {
+            "id": 25,
+            "first_name": "Joan",
+            "last_name": "Magnus",
+            "email": "jmagnuso@mtv.com",
+            "gender": "Female",
+            "ip_address": "246.69.252.110"
+        }];
+
+    var userContainer = document.getElementById('user-data');
+    var userTable = document.createElement('table');
+    for (var i = 0; i < userReg.length; i++) {
+        var trRow = document.createElement('tr');
+        trRow.id = 'trid' + userReg[i].id;
+        trRow.onclick = function(){
+            this.style.background = "green";
+            var tmpElems= this.getElementsByTagName('td');
+            alert(tmpElems[2].textContent);
+        }
+        if (i % 2 != 0) {
+            trRow.style.background = "#eee";
+        }
+        userTable.appendChild(trRow);
+        var tdFirstName = document.createElement('td');
+        tdFirstName.id = 'tdfn' + (i + 1);
+        trRow.appendChild(tdFirstName);
+
+        var tdLastName = document.createElement('td');
+        tdLastName.id = 'tdln' + (i + 1);
+        trRow.appendChild(tdLastName);
+
+        var tdIP = document.createElement('td');
+        tdIP.id = 'tdip' + (i + 1);
+        trRow.appendChild(tdIP);
+
+        tdFirstName.innerText = userReg[i].first_name;
+        tdLastName.innerText = userReg[i].last_name;
+        tdIP.innerText = userReg[i].ip_address;
+    }
+    userTable.id = "tblid";
+    userTable.style.border = "1px solid #000";
+    userContainer.appendChild(userTable);
+    console.log(userContainer);
+</script>
+</body>
+</html>
