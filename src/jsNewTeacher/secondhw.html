@@ -5,8 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-id: <input type="text" id="userid" name="userid"><br/>
-name2changeK<input type="text" id="search" name="search"><br/>
+id:<br>
+<input type="text" id="userid" name="userid"><br/>
+name2change:<br>
+<input type="text" id="search" name="search"><br/>
 <input type="button" onclick="javascript:changeNames()" value="changeNames">
 <div id="user-data">
 
@@ -218,28 +220,28 @@ name2changeK<input type="text" id="search" name="search"><br/>
     var userContainer = document.getElementById('user-data');
     var userTable = document.createElement('table');
     for (var i = 0; i < userReg.length; i++) {
-        var trRow = document.createElement('tr');
-        trRow.id = 'trid' + userReg[i].id;
-        trRow.onclick = function () {
+        var tblRow = document.createElement('tr');
+        tblRow.id = 'trid' + userReg[i].id;
+        tblRow.onclick = function () {
             this.style.background = "green";
             var tmpElems = this.getElementsByTagName('td');
             alert(tmpElems[2].textContent);
         }
         if (i % 2 != 0) {
-            trRow.style.background = "#eee";
+            tblRow.style.background = "#eee";
         }
-        userTable.appendChild(trRow);
+        userTable.appendChild(tblRow);
         var tdFirstName = document.createElement('td');
         tdFirstName.id = 'tdfn' + (i + 1);
-        trRow.appendChild(tdFirstName);
+        tblRow.appendChild(tdFirstName);
 
         var tdLastName = document.createElement('td');
         tdLastName.id = 'tdln' + (i + 1);
-        trRow.appendChild(tdLastName);
+        tblRow.appendChild(tdLastName);
 
         var tdIP = document.createElement('td');
         tdIP.id = 'tdip' + (i + 1);
-        trRow.appendChild(tdIP);
+        tblRow.appendChild(tdIP);
 
         tdFirstName.innerText = userReg[i].first_name;
         tdLastName.innerText = userReg[i].last_name;
