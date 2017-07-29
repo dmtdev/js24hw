@@ -5,8 +5,8 @@
     <title>Title</title>
 </head>
 <body>
-<input type="text" id="userid" name="userid"><br/>
-<input type="text" id="search" name="search"><br/>
+id: <input type="text" id="userid" name="userid"><br/>
+name2changeK<input type="text" id="search" name="search"><br/>
 <input type="button" onclick="javascript:changeNames()" value="changeNames">
 <div id="user-data">
 
@@ -14,7 +14,7 @@
 
 <script>
 
-    var userReg = [{
+    var userReg = [{K
         "id": 1,
         "first_name": "Charles",
         "last_name": "Aizkovitch",
@@ -248,6 +248,7 @@
     userTable.id = "tblid";
     userTable.style.border = "1px solid #000";
     userContainer.appendChild(userTable);
+    userContainer.insertBefore()
     console.log(userContainer);
 
     function changeNames() {
@@ -255,6 +256,7 @@
         var id = document.getElementById('userid').value;
         document.getElementById('tdfn' + id).innerHTML = name;
         document.getElementById('tdln' + id).innerHTML = name;
+
     }
 </script>
 </body>
