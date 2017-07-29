@@ -13,11 +13,7 @@
 </div>
 
 <script>
-function changeNames() {
-    var name = document.getElementById('search').value;
-    var id = document.getElementById('userid').value;
 
-}
     var userReg = [{
         "id": 1,
         "first_name": "Charles",
@@ -224,9 +220,9 @@ function changeNames() {
     for (var i = 0; i < userReg.length; i++) {
         var trRow = document.createElement('tr');
         trRow.id = 'trid' + userReg[i].id;
-        trRow.onclick = function(){
+        trRow.onclick = function () {
             this.style.background = "green";
-            var tmpElems= this.getElementsByTagName('td');
+            var tmpElems = this.getElementsByTagName('td');
             alert(tmpElems[2].textContent);
         }
         if (i % 2 != 0) {
@@ -253,6 +249,13 @@ function changeNames() {
     userTable.style.border = "1px solid #000";
     userContainer.appendChild(userTable);
     console.log(userContainer);
+
+    function changeNames() {
+        var name = document.getElementById('search').value;
+        var id = document.getElementById('userid').value;
+        document.getElementById('tdfn' + id).innerHTML = name;
+        document.getElementById('tdln' + id).innerHTML = name;
+    }
 </script>
 </body>
 </html>
