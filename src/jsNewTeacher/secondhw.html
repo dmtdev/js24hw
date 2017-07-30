@@ -17,7 +17,7 @@ name2change:<br>
 <script>
 
     var userReg = [{
-        "id": 1,
+        "id": "one",
         "first_name": "Charles",
         "last_name": "Aizkovitch",
         "email": "caizkovitch0@youtu.be",
@@ -25,7 +25,7 @@ name2change:<br>
         "ip_address": "203.200.94.106"
     },
         {
-            "id": 2,
+            "id": "two",
             "first_name": "Ches",
             "last_name": "Birks",
             "email": "cbirks1@paginegialle.it",
@@ -33,7 +33,7 @@ name2change:<br>
             "ip_address": "161.162.179.167"
         },
         {
-            "id": 3,
+            "id": "36958a",
             "first_name": "Sven",
             "last_name": "Moreland",
             "email": "smoreland2@wsj.com",
@@ -193,7 +193,7 @@ name2change:<br>
             "ip_address": "86.225.40.22"
         },
         {
-            "id": 23,
+            "id": '23erx',
             "first_name": "Dulciana",
             "last_name": "Trowbridge",
             "email": "dtrowbridgem@weather.com",
@@ -219,34 +219,63 @@ name2change:<br>
 
     var userContainer = document.getElementById('user-data');
     var userTable = document.createElement('table');
-    for (var i = 0; i < userReg.length; i++) {
-        var tblRow = document.createElement('tr');
-        tblRow.id = 'trid' + userReg[i].id;
+    //    for (var i = 0; i < userReg.length; i++) {
+    //        var tblRow = document.createElement('tr');
+    //        tblRow.id = 'trid' + userReg[i].id;
+    //        tblRow.onclick = function () {
+    //            this.style.background = "green";
+    //            var tmpElems = this.getElementsByTagName('td');
+    //            alert(tmpElems[2].textContent);
+    //        }
+    //        if (i % 2 != 0) {
+    //            tblRow.style.background = "#eee";
+    //        }
+    //        userTable.appendChild(tblRow);
+    //        var tdFirstName = document.createElement('td');
+    //        tdFirstName.id = 'tdfn' + (i + 1);
+    //        tblRow.appendChild(tdFirstName);
+    //
+    //        var tdLastName = document.createElement('td');
+    //        tdLastName.id = 'tdln' + (i + 1);
+    //        tblRow.appendChild(tdLastName);
+    //
+    //        var tdIP = document.createElement('td');
+    //        tdIP.id = 'tdip' + (i + 1);
+    //        tblRow.appendChild(tdIP);
+    //
+    //        tdFirstName.innerText = userReg[i].first_name;
+    //        tdLastName.innerText = userReg[i].last_name;
+    //        tdIP.innerText = userReg[i].ip_address;
+    //    }
+    var i = 0;
+    userReg.forEach(function (user) {
+        tblRow = document.createElement('tr');
+        tblRow.id = 'trid' + user.id;
         tblRow.onclick = function () {
             this.style.background = "green";
             var tmpElems = this.getElementsByTagName('td');
             alert(tmpElems[2].textContent);
-        }
+        };
         if (i % 2 != 0) {
             tblRow.style.background = "#eee";
         }
         userTable.appendChild(tblRow);
         var tdFirstName = document.createElement('td');
-        tdFirstName.id = 'tdfn' + (i + 1);
+        tdFirstName.id = 'tdfn' + user.id;
+        tdFirstName.innerText = user.first_name;
         tblRow.appendChild(tdFirstName);
 
         var tdLastName = document.createElement('td');
-        tdLastName.id = 'tdln' + (i + 1);
+        tdLastName.id = 'tdln' + user.id;
+        tdLastName.innerText = user.last_name;
         tblRow.appendChild(tdLastName);
 
         var tdIP = document.createElement('td');
-        tdIP.id = 'tdip' + (i + 1);
+        tdIP.id = 'tdfn' + user.id;
+        tdIP.innerText = user.ip_address;
         tblRow.appendChild(tdIP);
-
-        tdFirstName.innerText = userReg[i].first_name;
-        tdLastName.innerText = userReg[i].last_name;
-        tdIP.innerText = userReg[i].ip_address;
-    }
+        i++;
+    });
     userTable.id = "tblid";
     userTable.style.border = "1px solid #000";
     userContainer.appendChild(userTable);
