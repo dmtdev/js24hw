@@ -259,7 +259,7 @@ name2change:<br>
         if (i % 2 != 0) {
             tblRow.style.background = "#eee";
         }
-        userTable.appendChild(tblRow);
+        userTable.insertBefore(tblRow, userTable.firstChild);
         tblRow.appendChild(makeElem(user.id, 'tdfn',user.first_name,'td'));
         tblRow.appendChild(makeElem(user.id, 'tdln',user.last_name,'td'));
         tblRow.appendChild(makeElem(user.id, 'tdip',user.ip_address,'td'));
