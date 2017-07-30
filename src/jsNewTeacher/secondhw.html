@@ -260,20 +260,23 @@ name2change:<br>
             tblRow.style.background = "#eee";
         }
         userTable.appendChild(tblRow);
-        var tdFirstName = document.createElement('td');
-        tdFirstName.id = 'tdfn' + user.id;
-        tdFirstName.innerText = user.first_name;
-        tblRow.appendChild(tdFirstName);
-
-        var tdLastName = document.createElement('td');
-        tdLastName.id = 'tdln' + user.id;
-        tdLastName.innerText = user.last_name;
-        tblRow.appendChild(tdLastName);
-
-        var tdIP = document.createElement('td');
-        tdIP.id = 'tdfn' + user.id;
-        tdIP.innerText = user.ip_address;
-        tblRow.appendChild(tdIP);
+        tblRow.appendChild(makeElem(user.id, 'tdfn',user.first_name,'td'));
+        tblRow.appendChild(makeElem(user.id, 'tdln',user.last_name,'td'));
+        tblRow.appendChild(makeElem(user.id, 'tdip',user.ip_address,'td'));
+//        var tdFirstName = document.createElement('td');
+//        tdFirstName.id = 'tdfn' + user.id;
+//        tdFirstName.innerText = user.first_name;
+//        tblRow.appendChild(tdFirstName);
+//
+//        var tdLastName = document.createElement('td');
+//        tdLastName.id = 'tdln' + user.id;
+//        tdLastName.innerText = user.last_name;
+//        tblRow.appendChild(tdLastName);
+//
+//        var tdIP = document.createElement('td');
+//        tdIP.id = 'tdip' + user.id;
+//        tdIP.innerText = user.ip_address;
+//        tblRow.appendChild(tdIP);
         i++;
     });
     userTable.id = "tblid";
@@ -287,6 +290,12 @@ name2change:<br>
         document.getElementById('tdfn' + id).innerHTML = name;
         document.getElementById('tdln' + id).innerHTML = name;
 
+    }
+    function makeElem(elemId, elemIdMask, elemValue, elemType){
+        var elem = document.createElement(elemType);
+        elem.id= elemIdMask+elemId;
+        elem.innerHTML = elemValue;
+        return elem;
     }
 </script>
 </body>
