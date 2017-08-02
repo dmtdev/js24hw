@@ -10,6 +10,8 @@ app.get('/', function (req, res) {
     var parsedURL = url.parse(req.url);
     console.log();
     res.send('get');
+    var s = 'http';
+
 });
 
 app.post('/', function (req, res) {

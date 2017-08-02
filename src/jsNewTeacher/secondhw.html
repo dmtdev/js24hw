@@ -260,9 +260,9 @@ name2change:<br>
             tblRow.style.background = "#eee";
         }
         userTable.insertBefore(tblRow, userTable.firstChild);
-        tblRow.appendChild(makeElem(user.id, 'tdfn',user.first_name,'td'));
-        tblRow.appendChild(makeElem(user.id, 'tdln',user.last_name,'td'));
-        tblRow.appendChild(makeElem(user.id, 'tdip',user.ip_address,'td'));
+        tblRow.appendChild(makeElem(user.id, 'tdfn', user.first_name, 'td'));
+        tblRow.appendChild(makeElem(user.id, 'tdln', user.last_name, 'td'));
+        tblRow.appendChild(makeElem(user.id, 'tdip', user.ip_address, 'td'));
 //        var tdFirstName = document.createElement('td');
 //        tdFirstName.id = 'tdfn' + user.id;
 //        tdFirstName.innerText = user.first_name;
@@ -291,9 +291,10 @@ name2change:<br>
         document.getElementById('tdln' + id).innerHTML = name;
 
     }
-    function makeElem(elemId, elemIdMask, elemValue, elemType){
+
+    function makeElem(elemId, elemIdMask, elemValue, elemType) {
         var elem = document.createElement(elemType);
-        elem.id= elemIdMask+elemId;
+        elem.id = elemIdMask + elemId;
         elem.innerHTML = elemValue;
         return elem;
     }

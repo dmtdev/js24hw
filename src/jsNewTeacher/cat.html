@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<cat style="position: absolute;">&gt;(*_*)&lt;</cat>
+
+<script>
+    var cat = document.getElementsByTagName('cat')[0];
+    var mousePath = [];
+
+    document.addEventListener('mousemove', mouseMoved);
+
+    function mouseMoved(event) {
+        mousePath.push(event);
+        setInterval(catMove, 1000, event);
+    }
+
+    function catMove() {
+        if(!mousePath.length)
+            return;
+        if(mousePath.length>1)
+            var event = mousePath.shift();
+        if(mousePath.length>1)
+            var event = mousePath.shift();
+        if(mousePath.length>1)
+            var event = mousePath.shift();
+
+        cat.style.left = event.clientX + 'px';
+        cat.style.top = event.clientY + 'px';
+    }
+
+//        document.addEventListener('mousemove', function (e) {
+//            setTimeout(function () {
+//                cat.style.left = e.clientX + 'px';
+//                cat.style.top = e.clientY + 'px';
+//            }, 1000, e)
+//
+//        });
+</script>
+</body>
+</html>

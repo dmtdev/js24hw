@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clock</title>
+</head>
+<body>
+
+
+<div id="clock-display" onclick="saveCurrentTime()"></div>
+<input type="button" value="setAlarm" onclick="setAlarm()"><input type="button" value="setRepitedAlarm" onclick="setAlarm(true)">
+<div id="saved-time"></div>
+<div id="alarm-time"></div>
+
+<script>
+    var alarmDate = new Date(1970);
+    var savedDate = new Date(1970);
+    setInterval(function () {
+        var dt = new Date();
+        dt.setMilliseconds(0);
+        var currentTime = dt.getHours() + ' : ' + dt.getMinutes() + ' : ' + dt.getSeconds();
+        var alarmTime = alarmDate.getHours() + ' : ' + alarmDate.getMinutes() + ' : ' + alarmDate.getSeconds();
+
+        if(alarmDate.getTime() == dt.getTime())
+        {
+            alert("Allarm (dates)");
+        }
+        if(currentTime === alarmTime){
+            console.log((dt.getTime() + '!=' + alarmDate.getTime()));;
+            alert('Alarm!!! (strings)');
+        }
+        document.getElementById('clock-display').innerText = currentTime;
+    }, 1000);
+    function saveCurrentTime() {
+        var currentTime = document.getElementById('clock-display').textContent;
+        savedDate = new Date();
+        savedDate.setMilliseconds(0);
+        var newDiv = document.createElement('div');
+        newDiv.innerText = 'SavedTime - ' + currentTime;
+        document.getElementById('saved-time').appendChild(newDiv);
+    }
+    function setAlarm(){
+        alarmDate = new Date();
+        alarmDate.setMinutes(alarmDate.getMinutes()+1);
+        alarmDate.setMilliseconds(0);
+        document.getElementById('alarm-time').innerText = 'AlarmTime - ' + alarmDate.getHours() + ' : ' + alarmDate.getMinutes() + ' : ' + alarmDate.getSeconds();
+
+    }
+</script>
+</body>
+</html>
