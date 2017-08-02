@@ -8,7 +8,7 @@
 
 
 <div id="clock-display" onclick="saveCurrentTime()"></div>
-<input type="button" value="setAlarm" onclick="setAlarm()"><input type="button" value="setRepitedAlarm" onclick="setAlarm(true)">
+<input type="button" value="setAlarm" onclick="setAlarm()">
 <div id="saved-time"></div>
 <div id="alarm-time"></div>
 
@@ -23,7 +23,7 @@
 
         if(alarmDate.getTime() == dt.getTime())
         {
-            alert("Allarm (dates)");
+            alert("Alarm (dates)");
         }
         if(currentTime === alarmTime){
             console.log((dt.getTime() + '!=' + alarmDate.getTime()));;
