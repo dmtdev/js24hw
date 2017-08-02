@@ -15,33 +15,38 @@
 <script>
     var alarmDate = new Date(1970);
     var savedDate = new Date(1970);
+    var savedDates = [];
+
     setInterval(function () {
         var dt = new Date();
         dt.setMilliseconds(0);
         var currentTime = dt.getHours() + ' : ' + dt.getMinutes() + ' : ' + dt.getSeconds();
         var alarmTime = alarmDate.getHours() + ' : ' + alarmDate.getMinutes() + ' : ' + alarmDate.getSeconds();
 
-        if(alarmDate.getTime() == dt.getTime())
-        {
+        if (alarmDate.getTime() == dt.getTime()) {
             alert("Alarm (dates)");
         }
-        if(currentTime === alarmTime){
-            console.log((dt.getTime() + '!=' + alarmDate.getTime()));;
+        if (currentTime === alarmTime) {
+            console.log((dt.getTime() + ' ? ' + alarmDate.getTime()));
             alert('Alarm!!! (strings)');
         }
         document.getElementById('clock-display').innerText = currentTime;
     }, 1000);
+
     function saveCurrentTime() {
         var currentTime = document.getElementById('clock-display').textContent;
         savedDate = new Date();
+        savedDates.push(savedDate);
         savedDate.setMilliseconds(0);
+
         var newDiv = document.createElement('div');
         newDiv.innerText = 'SavedTime - ' + currentTime;
         document.getElementById('saved-time').appendChild(newDiv);
     }
-    function setAlarm(){
+
+    function setAlarm() {
         alarmDate = new Date();
-        alarmDate.setMinutes(alarmDate.getMinutes()+1);
+        alarmDate.setMinutes(alarmDate.getMinutes() + 1);
         alarmDate.setMilliseconds(0);
         document.getElementById('alarm-time').innerText = 'AlarmTime - ' + alarmDate.getHours() + ' : ' + alarmDate.getMinutes() + ' : ' + alarmDate.getSeconds();
 
