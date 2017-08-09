@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="fid">
+    <input type="hidden" id="petId">
+    name : <input type="text" id="petName">
+    type : <input type="text" id="petType"><br>
+    <input type="button" value="SaveOrUpdate" onclick="petsApp.addPet()">
+</form>
+<table id="tblid">
+
+</table>
+<script>
+    //        var model = [];
+    //
+    //        model.push(Pet);
+
+
+    var petsApp = new function () {
+
+        this.model = [];
+
+        this.addPet = function (pet) {
+
+            if (typeof pet == 'undefined') {
+
+                var tmpid = Number(document.getElementById('petId').value);
+
+                for (var i = 0; i < this.model.length; i++) {
+                    if (this.model[i]['id'] == tmpid) {
+                        this.model[i]['name'] = document.getElementById('petName').value;
+                        this.model[i]['type'] = document.getElementById('petType').value;
+                        document.getElementById('petId').value = '';
+                        document.getElementById('petName').value = '';
+                        document.getElementById('petType').value = '';
+                        this.createTable();
+                        return;
+                    }
+                }
+                var maxId = 0;
+                for (var i = 0; i < this.model.length; i++) {
+                    if (maxId < this.model[i]['id']) {
+                        maxId = this.model[i]['id'];
+                    }
+                }
+                pet = {
+                    id: maxId+1,
+                    name: document.getElementById('petName').value,
+                    type: document.getElementById('petType').value
+                };
+                document.getElementById('petName').value = '';
+                document.getElementById('petType').value = '';
+                this.model.push(pet);
+                this.createTable();
+            }
+            else
+            {
+                this.model.push(pet);
+            }
+            this.createTable();
+            console.log(this.model);
+        };
+
+        this.getPets = function () {
+            return this.model;
+        };
+
+        this.getPet = function (id) {
+            for (var i = 0; i < this.model.length; i++) {
+                if (this.model[i]['id'] == id) {
+                    return this.model;
+                }
+            }
+            return "empty";
+        };
+
+        this.deletePet = function (pet) {
+            for (var i = 0; i < this.model.length; i++) {
+                if (this.model[i]['id'] == pet['id']) {
+                    console.log("getpet" + i);
+                    this.model.splice(i, 1);
+                }
+            }
+            this.createTable();
+        };
+
+        this.updatePet = function (pet) {
+
+//            for (var i = 0; i < this.model.length; i++) {
+//                if (this.model[i]['id'] == pet['id']) {
+//                    this.model[i]['name'] = pet['name'];
+//                    this.model[i]['type'] = pet['type'];
+//
+//                }
+//            }
+            this.createTable();
+        };
+        this.getFormData = function (pet) {
+
+            document.getElementById('petId').value = pet['id'];
+            document.getElementById('petName').value = pet['name'];
+            document.getElementById('petType').value = pet['type'];
+        }
+        this.createTable = function () {
+            var table = document.getElementById('tblid');
+            table.innerText = '';
+            table.style.border = '1px solid black';
+            for (var i = 0; i < this.model.length; i++) {
+                var row = document.createElement('tr');
+                row.id = 'trid' + this.model[i]['id'];
+                var td = document.createElement('td');
+                td.innerHTML = this.model[i]['name'];
+                row.appendChild(td);
+                var td = document.createElement('td');
+                td.innerHTML = this.model[i]['type'];
+                row.appendChild(td);
+
+                var td = document.createElement('td');
+                var input = document.createElement('input');
+                input.type = "button";
+                input.value = "edit";
+                input.id = i;
+                input.onclick = function () {
+                    petsApp.getFormData(petsApp.model[this.id]);
+                };
+                td.appendChild(input);
+                row.appendChild(td);
+                var input = document.createElement('input');
+                input.type = "button";
+                input.value = "delete";
+                input.id = i;
+                input.onclick = function () {
+                    petsApp.deletePet(petsApp.model[this.id]);
+                };
+                td.appendChild(input);
+                row.appendChild(td);
+                table.appendChild(row);
+            }
+        };
+
+    };
+
+
+    petsApp.addPet({id: 1, type: "cat", name: "Cat"});
+    petsApp.addPet({id: 3, type: "dog", name: "Dog"});
+    petsApp.addPet({id: 5, type: "bird", name: "Bird"});
+    petsApp.createTable();
+
+
+
+</script>
+</body>
+</html>
