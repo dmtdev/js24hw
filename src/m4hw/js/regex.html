@@ -7,13 +7,20 @@
 <script>
     var html = '<span><a href="http://domain.com" _target=blank>text</a>&nbsp;<b>22</b></span>';
 
-    var tagRx = /<(.*?)>|\s/g;
+    var tagRx = /<([a-z]*)>|<([a-z]*)(?=\s)/ig;
 
     var tag;
     console.log('tags:');
     while (tag = tagRx.exec(html)) {
-        console.log(tag[1]);
+        if(tag[1]){
+        //{if(typeof tag[1] != "undefined"){
+            console.log(tag[1]);
+        }
+        else{
+            console.log(tag[2]);
+        }
     }
+
 
     var attrRx = /\s([\w]*)=/g;
 
@@ -22,7 +29,7 @@
         console.log(tag[1]);
     }
 
-    var txtRx = />([\w]{1,})</g;
+    var txtRx = />(.*?)</g;
 
     console.log('txt:');
     while (tag = txtRx.exec(html)) {
