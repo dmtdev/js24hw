@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    var html = '<span><a href="http://domain.com" _target=blank>text</a>&nbsp;<b>22</b></span>';
+
+    var tagRx = /<(.*?)>|\s/g;
+
+    var tag;
+    console.log('tags:');
+    while (tag = tagRx.exec(html)) {
+        console.log(tag);
+        //console.log(tagRx.lastIndex);
+    }
+
+    var attrRx = /\s([\w]*)=/g;
+
+    console.log('attributes:');
+    while (tag = attrRx.exec(html)) {
+        console.log(tag[1]);
+    }
+
+    var txtRx =  />([\w]{1,})</g;
+
+    console.log('txt:');
+    while (tag = txtRx.exec(html)) {
+        console.log(tag);
+    }
+
+
+
+
+
+
+</script>
+<body>
+
+</body>
+</html>
